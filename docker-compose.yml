@@ -1,0 +1,26 @@
+version: '2'
+services:
+  nginx:
+    build: nginx
+    links: 
+        - flask
+    ports: 
+        - 8080:8080
+  flask:
+    build: app
+    environment:
+        - DATABASE_URI=postgresql://postgres:SecretPassword@postgres/notes
+    depends_on: 
+        - postgres
+    links:
+        - postgres
+    expose:
+        - '5000'
+    command: /usr/local/bin/gunicorn -w 2 -b :5000 app:app
+  postgres:
+    environment:
+        - POSTGRES_PASSWORD=SecretPassword
+        - POSTGRES_DB=notes
+    expose: 
+        - '5432'
+    image: postgres
