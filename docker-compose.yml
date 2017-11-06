@@ -9,7 +9,7 @@ services:
   flask:
     build: app
     environment:
-        - DATABASE_URI=postgresql://postgres:SecretPassword@postgres/notes
+        - DATABASE_URL=postgresql://postgres:SecretPassword@postgres/notes
     depends_on: 
         - postgres
     links:

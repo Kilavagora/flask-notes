@@ -13,7 +13,10 @@
   "addons": [
     {
       "plan": "heroku-postgresql:hobby-dev",
-      "as": "DATABASE_URI"
+      "as": "DATABASE"
     }
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "python app/db_create.py"
+  }
 }
