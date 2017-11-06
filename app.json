@@ -2,7 +2,7 @@
   "name": "Flask-Notes",
   "description": "A simple flask notes demo app",
   "repository": "https://github.com/kilavagora/flask-notes",
-  "logo": "https://rawgit.com/kilavagora/flask-notes/logo.png",
+  "logo": "https://rawgit.com/kilavagora/flask-notes/master/logo.png",
   "keywords": [
     "flask",
     "postgres",
@@ -15,8 +15,5 @@
       "plan": "heroku-postgresql:hobby-dev",
       "as": "DATABASE_URI"
     }
-  ],
-  "scripts": {
-    "postdeploy": "python app/db_create.py"
-  }
+  ]
 }
