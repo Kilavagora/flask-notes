@@ -1,11 +1,12 @@
 import os
+from urllib.parse import quote_plus
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify
 
 
 app = Flask(__name__, static_url_path='')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') or f"mssql+pyodbc:///?odbc_connect={quote_plus(os.getenv('SQLAZURECONNSTR_ODBC'))}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
