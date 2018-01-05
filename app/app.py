@@ -102,5 +102,12 @@ def delete_note(id):
         }), 200
 
 
+@app.cli.command()
+def dbcreate():
+    db.create_all()
+    seed = Note("First Note!", "This is a first note!")
+    seed.save()
+
+
 if __name__ == '__main__':
     app.run()
