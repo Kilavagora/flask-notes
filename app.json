@@ -10,13 +10,17 @@
     "demo",
     "notes"
   ],
-  "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev",
-      "as": "DATABASE"
+  "env": {
+    "FLASK_APP": {
+      "description": "Env to run the Flask cli commands.",
+      "value": "app/app.py"
     }
-  ],
+  },
+  "addons": [{
+    "plan": "heroku-postgresql:hobby-dev",
+    "as": "DATABASE"
+  }],
   "scripts": {
-    "postdeploy": "python app/db_create.py"
+    "postdeploy": "python -m flask dbcreate"
   }
 }
